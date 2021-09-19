@@ -14,6 +14,10 @@ Techical plan:
 		* Nhập thông tin User / Password
 		* Nhấn nút Log in
 - Task 2: Search "keywords" mà chúng ta cần crawl
+	+ Task 2.1 Tìm khung search
+	+ Task 2.2 bỏ keywords vào để search
+	Tuy nhiên là steps 2.1 và 2.2 đã thay đổi, hữu hiệu ở hiện tại là search thẳng bằng cách get url luôn cho nhanh
+	+ Task 2.3 search bằng cách gắn keywords vào url
 - Task 3: Mở các URL dẫn đến các profile vừa lấy được
 - Task 4: Tiếp tục scrape các thông tin chi tiết có trong các profile --> từ đó ghi ra file .csv
 
