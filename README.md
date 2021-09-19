@@ -20,7 +20,7 @@ Techical plan:
 --
 Các Library & Module cần được import
 - selenium : thao tác với Chrome
-pip install selenium
+'pip install selenium'
 
 - chromedriver : cho selenium làm việc với Chrome
 cần kiểm tra Chrome version trong máy tính trước
