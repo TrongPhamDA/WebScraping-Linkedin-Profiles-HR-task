@@ -5,6 +5,9 @@ from selenium.webdriver.common.keys import Keys
 
 # pip install python-time
 from time import sleep
+# hoặc dùng method có sẵn của selenium
+# driver.implicitly_wait(2)
+
 
 print("-- Finish importing packages --")
 
@@ -22,12 +25,20 @@ username = lines[0].strip()
 password = lines[1].strip()
 
 # Open Chrome và truy cập vào LinkedIn login site
+
+# để file chromedrive.exe ở cùng file main.py
 driver = webdriver.Chrome()
+# Maximizing window
+driver.maximize_window()
+# Hoặc cung cấp path chi tiết của ChromeDriver
+# driver = webdriver.Chrome("C:\\Users\\Phanl\\Desktop\\GitHub\\WebScraping-Linkedin-Profiles-HR-task\\chromedriver.exe")
+
 url = "https://www.linkedin.com/login"
 driver.get(url)
-print("-- Open Chrome & jump to LinkedIn login site --")
+print("\n-- Open Chrome & jump to LinkedIn login site --")
 # delay 2s mỗi khi làm 1 thao tác
-sleep(2)
+driver.implicitly_wait(2)
+
 
 # Định vị các đối tượng (inspect đối tượng - tìm code HTML của đối tượng):
 
@@ -50,9 +61,43 @@ sleep(2)
 login_field = driver.find_element_by_xpath("/html/body/div/main/div[2]/div[1]/form/div[3]/button")
 # click() để thao tác bấm chuột trái lên nút sign in
 login_field.click()
+print(f"-- Login : {username} --")
 sleep(2)
-print(f"-- Login: {username} --")
+
+
+# Task 2: Search các profile mong muốn theo từ khóa
+
+# Định vị được khung search (ngay sau logo "in")
+# Full Xpath lúc này không còn hoạt động do không cố định, Xpath đã thành Xpath động, 
+# chuyển sang kết hợp tìm với Xpath với tên class
+search_field = driver.find_element_by_xpath('//*[@class="search-global-typeahead__input always-show-placeholder"]')
+
+# Nhập vị trí công việc cần tìm người
+# thêm từ khóa: people, jobs, groups để tìm profile, công việc, nhóm tương ứng
+# search_keys = input(f"---\nEnter job title: ")
+search_keys = "data analyst"
+# search_keys = search_keys.strip()
+# search_field.send_keys(search_keys)
+# tự ấn ENTER sau khi send_keys() từ khóa
+# vì không tìm ra nút search
+# search_field.send_keys(Keys.RETURN)
+
+# tuy nhiên, LinkedIn đã phát triển, nên search theo send_keys() sẽ tìm không đúng yêu cầu
+# chuyển qua get theo url
+search_url = f"https://www.linkedin.com/search/results/people/?keywords={search_keys}&origin=SWITCH_SEARCH_VERTICAL&sid=yRI"
+driver.get(search_url)
+
+# Task 3: Sử dụng Beautiful Soup 4 để lấy dữ liệu từ web
+
+
+
+
+
+
+
+
+
+print(f"-- Searching : {search_keys}")
 
 # Nên để 1 dòng thông báo như thế này để biết chương trình của mình đã chạy từ đầu tới cuối
 print('\n-- DONE --')
-
