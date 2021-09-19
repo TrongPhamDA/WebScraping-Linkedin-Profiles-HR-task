@@ -32,8 +32,17 @@ tìm version driver cập nhật mới nhất đúng với phiên bản Chrome (
 https://chromedriver.storage.googleapis.com/index.html?path=93.0.4577.63
 
 Chrome driver download về rồi thì để ở đâu?
-Để ở bất kỳ thư viện nào trong ổ đĩa C, tạm thời có thể ở thư mục Download
+Để ở chung thư mục với file python
+
+- time : để delay thời gian giữa các thao tác, tránh cho website nhận diện là bot cào dữ liệu
+'pip install python-time'
 
 - beautifulsoup4 : tách dữ liệu từ website
-- time : để delay thời gian giữa các thao tác, tránh cho website nhận diện là bot cào dữ liệu
+
 - csv : để đọc và ghi dữ liệu ra file csv
+
+--
+-Khi terminal hiển thị lỗi:
+"ERROR:gpu_init.cc(426) Passthrough is not supported, GL is disabled" <br/>
+- chrome://settings -> Click Advanced at the bottom -> Check the Use hardware acceleration when available box <br/>
+- chrome://flags -> Search for WebGL in the search bar -> Enable / Activate WebGL <br/>
